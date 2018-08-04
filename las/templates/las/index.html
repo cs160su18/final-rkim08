@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<link type ="text/css" rel="stylesheet" href="../static/css/main.css">
+  
+  <style type="text/css">
+    
+    body {
+      background-image: url('https://static1.squarespace.com/static/56be9c253c44d89a5812c78c/t/5b22f25d6d2a737c4e2dc116/1529016959565/work-team-medium.jpg?format=1500w');
+
+    }
+    
+    .main{
+      text-align:center;
+    }
+    
+    .main h1{
+      font-size:60px;
+    }
+    .main input[type='text']{
+      width:500px;
+    }
+    
+  </style>
+</head>
+
+<body>
+	<div class="navigator">
+    <a href="{% url 'login' %}">Sign Up / Login</a>
+    <a href="{% url 'collections' %}">My Collections</a>
+    <a href="{% url 'search' %}">Category</a>
+    <a href="{% url 'guide' %}">User Guide</a>
+    <div id="logo">
+      <a href="{% url 'index' %}" class ="active" id="logo">LAS</a>
+    </div>
+	</div>
+  
+  <div class="main">
+    <h1>
+      Life As Someone Else
+    </h1>
+    <h3>
+      Everyone has a story to tell, <br>
+      what's your story?
+    </h3>
+    
+     <input type="text" placeholder="Search..">
+    <button type="submit"><i class="fa fa-search"></i></button>
+  </div>
+</body>
+</html>
