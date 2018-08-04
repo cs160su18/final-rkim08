@@ -25,12 +25,13 @@ SECRET_KEY = 'of*1_dbynim*6(&%xz8wr=*m(9^gajajk8^i)k-0wfa7j-s-(('
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['final-rkim08-rachelk1308203611.codeanyapp.com']
 
 
 # Application definition
 
 INSTALLED_APPS = [
+    'las',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
