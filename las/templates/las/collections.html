@@ -24,21 +24,30 @@
       color:black;
 /*       width: */
     }
-    .main #about #extra #star {
-      margin:10px 15px;
+    main #about #me{
+      margin: 10px 15px;
       border-style: solid;
       border-width: 1px;
       border-color: #F9F9F9;
       background-color:#F9F9F9;
-        color:black;
+      color:black;
+/*       width: */
+    }
+    .main #about #extra #star, .main #about #extra #follows {
+      border-style: solid;
+      border-width: 1px;
+      border-color: #F9F9F9;
+      background-color:#F9F9F9;
+      color:black;
+      flex: 1 0 25%;
     }
     .main #about #extra #following {
-      margin:10px 15px;
       border-style: solid;
       border-width: 1px;
       border-color: #F9F9F9;
-      background-color:#F9F9F9;
-        color:black;
+      background-color:blue;
+      color:black;
+      flex: 1 0 75%;
     }
     
     #posts #one{
@@ -51,6 +60,25 @@
       border-radius: 10px;
       text-align:center;
     }
+    
+    .button .add-button {
+      height: 70px;
+      width: 70px;
+      padding: 10px;
+      border-radius:50%;
+      color:black;
+      border-width:thick;
+
+   
+    }
+    .button {
+      position:fixed;
+      bottom: 70px;
+      right:70px;
+    }
+    
+
+
   </style>
 </head>
 
@@ -85,23 +113,23 @@
         </h3>
       </div>
     </div>
-    
-    <div id="about" style="float:left; width: 40%; height:80%">
-      <div id="extra" style="width:100%">
-        <div id="star" style="float: left; width: 50%">
-<!--           <img src="../static/css/star.jpg" style="height:10px"> -->
-          <h1>
+   
+    <div id="about" style="float:left; width: 40%; height:80%; display: flex; flex-direction: column;">
+      <div id="extra" style="flex: 1; display: flex;">
+        <div id="star" style="flex: 1">
+          <img src="../static/css/star.jpg" style="height:20px">
+          <span>
             13,000
-          </h1>
+          </span>
         </div>
-        <div id="follows" style="float: right; width: 40%">
+        <div id="follows" style="flex: 1">
           <h1>
             Following
           </h1>
         </div>
       </div>
       
-      <div id='me' style="width:90%">
+      <div id='me' style="width: 90%; flex: 2">
         <h1>
          About Me
         </h1>
@@ -112,7 +140,7 @@
       
     </div>
   </div>
-  
+
  
     <section id="posts">
       <div id="one">
@@ -155,7 +183,13 @@
           asdasada<br>asdasada<br>asdasada<br>
         </h3>
       </div>
+     
     </section>
+  <div class='button'>
+     <button type="button" class="add-button"> + </button>
+  </div>
+  
+ 
   
   
 
