@@ -6,51 +6,13 @@
   <style type="text/css">
     .main {
       background-color:#113A5D;
-      height: 300px;
+/*       height: 300px; */
       width:100%;
       margin:0;
     }
-    .main #job {
 
-      color:white;
-    }
     
-    .main #job #description, .main #about #me{
-      margin: 10px 15px;
-      border-style: solid;
-      border-width: 1px;
-      border-color: #F9F9F9;
-      background-color:#F9F9F9;
-      color:black;
-/*       width: */
-    }
-    main #about #me{
-      margin: 10px 15px;
-      border-style: solid;
-      border-width: 1px;
-      border-color: #F9F9F9;
-      background-color:#F9F9F9;
-      color:black;
-/*       width: */
-    }
-    .main #about #extra #star, .main #about #extra #follows {
-      border-style: solid;
-      border-width: 1px;
-      border-color: #F9F9F9;
-      background-color:#F9F9F9;
-      color:black;
-      flex: 1 0 25%;
-    }
-    .main #about #extra #following {
-      border-style: solid;
-      border-width: 1px;
-      border-color: #F9F9F9;
-      background-color:blue;
-      color:black;
-      flex: 1 0 75%;
-    }
-    
-    #posts #one{
+    .posts #one{
       margin: 60px 15px;
       display:inline-block;
       width:250px;
@@ -59,6 +21,7 @@
       border-color: #FD5F00;
       border-radius: 10px;
       text-align:center;
+
     }
     
     .button .add-button {
@@ -69,7 +32,6 @@
       color:black;
       border-width:thick;
 
-   
     }
     .button {
       position:fixed;
@@ -93,56 +55,60 @@
     </div>
 	</div>
   
-  <div class="main">
-    <div id="pic" style="float:left; width: 20%;">
-      <img src="https://lh3.googleusercontent.com/igsAgts4NCiWjewagOFo4eymGWNnklXLCeB_J-wm1G2sbFwNlU2evIXgOegSjbQrCrT3RHE=s85" style="width: 100%;">
+  <div class="main" style="display: flex; height:100%">
+    <div id="pic" style="float:left; margin:10px; flex: 2">
+      <img src="../static/css/bacon.jpg" style="width:100%">
     </div>
-    <div id="job" style="float:left; width: 40%; height:100%">
-      <h1>
-        Kevin Bacon
-      </h1>
-      <h3>
-        Software Engineer-Google
-      </h3>
-      <div id="description">
-        <h1>
-          Job Description
-        </h1>
-        <h3>
-          I am a full stack developer, primarily working on auto-driving cars. 
-        </h3>
-      </div>
-    </div>
-   
-    <div id="about" style="float:left; width: 40%; height:80%; display: flex; flex-direction: column;">
-      <div id="extra" style="flex: 1; display: flex;">
-        <div id="star" style="flex: 1">
-          <img src="../static/css/star.jpg" style="height:20px">
-          <span>
-            13,000
-          </span>
-        </div>
-        <div id="follows" style="flex: 1">
-          <h1>
-            Following
-          </h1>
-        </div>
+    <div id="content" style="display:flex; flex-direction:column; height:100%; flex: 8;">
+        <div id="top" style="float:left; display:flex; flex-direction:row; flex: 1">
+          <div id="name" style="display:flex; flex: 1;color:white; margin:10px;text-align:center;">
+            <h1>Kevin Bacon</h1>
+            <h3>Software Engineer-Google</h3>
+          </div>
+          
+          <div id="extra" style="flex: 1; display: flex; flex-direction:row;">
+            <div id="space" style="visibility:hidden; display:flex;">
+              <h1>K</h1>
+              <h3>a</h3>
+            </div>
+            
+            <div id="star" style="display:flex;flex-direction:row; flex: 1; border-style: solid;
+      border-width: 1px; border-color: #F9F9F9; background-color:#F9F9F9; color:black; margin:10px;align-self: flex-end;">
+              <img src="../static/css/star.jpg" style="height:20px">
+              <span>13,000</span>
+            </div>
+            <div id="follows" style="display:flex;flex-direction:row; flex: 1; border-style: solid;
+      border-width: 1px; border-color: #F9F9F9; background-color:#F9F9F9; color:black; margin:10px; align-self: flex-end; height:20px">
+              <p>Following</p>
+            </div>
+          </div>
       </div>
       
-      <div id='me' style="width: 90%; flex: 2">
-        <h1>
-         About Me
-        </h1>
-        <h3>
-          I love telling others about what I do and I enjoy writing in my diary to straighten out my thoughts for that day.  
-        </h3>
+      <div id="bottom" style="display:flex; flex-direction:row; flex: 1">
+        <div id="description" style="display:flex;flex-direction:row; flex: 2; border-style: solid;
+      border-width: 1px; border-color: #F9F9F9; background-color:#F9F9F9; color:black; margin:10px; height:100%">
+          <h1>Job Description</h1>
+          &nbsp&nbsp
+          <h3>
+            I am a full stack developer, primarily working on auto-driving cars. 
+          </h3>
+        </div>
+         <div id='me' style="display:flex; flex-direction:row; flex: 2;border-style: solid;
+      border-width: 1px; border-color: #F9F9F9; background-color:#F9F9F9; color:black; margin:10px; height:100%">
+            <h1>About Me</h1>
+           &nbsp&nbsp
+            <h3>
+              I love telling others about what I do and I enjoy writing in my diary to straighten out my thoughts for that day.  
+            </h3>
+          </div>
       </div>
-      
     </div>
   </div>
 
+    
+
  
-    <section id="posts">
+    <div class="posts" style="display:flex; flex-wrap:wrap;">
       <div id="one">
         <h1>
           08/05/2018
@@ -184,9 +150,9 @@
         </h3>
       </div>
      
-    </section>
   <div class='button'>
      <button type="button" class="add-button"> + </button>
+  </div>
   </div>
   
  
