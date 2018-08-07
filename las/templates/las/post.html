@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<link type ="text/css" rel="stylesheet" href="../../static/css/main.css">
+  
+  <style type="text/css">
+    body, html{
+      height:100%;
+      background-color: #F9F9F9;
+      margin:0;
+    }
+    .main {
+        text-align:center;
+        margin:0;
+      }
+      
+      .main input[type='text'] {
+        width:90%;
+      }
+    
+    .container #content, .container #comment{
+      
+      display:inline-block;
+      width:80%;
+      border-radius: 10px;
+      background-color:white;
+    }
+    .user{
+      background-color:#113A5D;
+      width:100%;
+    }
+    
+  </style>
+</head>
+
+<body>
+	<div class="navigator">
+		<a href="{% url 'login' %}">Sign Up / Login</a>
+    <a href="{% url 'collections' %}">My Collections</a>
+    <a href="{% url 'search' %}">Category</a>
+    <a href="{% url 'guide' %}">User Guide</a>
+		<div id="logo">
+      <a href="{% url 'index' %}" id="logo">LAS</a>
+    </div>
+	</div>
+  
+  <div class="main" >
+    <div class="user" style="display:flex; flex:1; flex-direction:row;">
+      <div id="pic" style=" float:right;flex:0.5;width: 20%; border:solid; align-items:flex-end;">
+       <img src="../../static/css/bacon.jpg" style="width:30%; margin-top:20px;text-align:right; ">
+      </div>
+      <div id="name" style="flex:2;flex-direction:column; text-align:left; color:white;">
+        <h1>Kevin Bacon</h1>
+        <h3>Software Engineer-Google</h3>
+      </div>
+    </div>
+
+    <div class="container">
+      <div id="content" style="text-align:left; margin-top:10px; width:80%; overflow:auto;">
+        <h1>08/06/2018</h1>
+        <center><img src="https://i.investopedia.com/content/short_article/top_4_companies_owne/shutterstock_227705986_google_android_robot.jpg"></center>
+        <h1>My day at Google </h1>
+        <p>Hello Hello Hello Hello Hello Hello Hello Hello Hello Hello Hello Hello Hello Hello Hello Hello Hello Hello Hello Hello Hello Hello Hello 
+        Hello Hello Hello Hello Hello Hello Hello Hello Hello Hello Hello Hello Hello Hello Hello Hello Hello Hello Hello Hello Hello Hello Hello Hello Hello Hello Hello Hello Hello </p>
+      </div>
+      <div id="comment" style="margin-top:10px;text-align:left; width: 80%; height: 100%; margin-bottom:20px;">
+        <h2>Comments</h2>
+        <input type="text" placeholder="Add a comment" style="height:30px;">
+        <button type="submit" ><i class="fa fa-search"></i>Comment</button>
+      </div>
+      
+    </div>
+  </div>
+
+</body>
+</html>

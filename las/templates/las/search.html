@@ -4,6 +4,14 @@
 	<link type ="text/css" rel="stylesheet" href="../static/css/main.css">
   
   <style type="text/css">
+    .main {
+        text-align:center;
+      }
+      
+      .main input[type='text'] {
+        width:500px;
+      }
+    
   </style>
 </head>
 
@@ -17,6 +25,11 @@
       <a href="{% url 'index' %}" id="logo">LAS</a>
     </div>
 	</div>
-  
+  <br>
+  <div class="main">
+    <input type="text" placeholder="Search...">
+    <button type="submit" onclick="location.href='search/'"><i class="fa fa-search"></i>Search</button>
+  </div>
+
 </body>
 </html>
