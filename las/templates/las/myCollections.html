@@ -26,36 +26,38 @@
     </div>
   
     <div class="main" style="display: flex;">
-      <div id="pic" style="float:left; margin: 10px; flex: 2">
-        <img src="{% static 'css/default.jpg' %}" style="width: 100%; border-radius: 1000px">
-      </div>
-      <div id="content" style="display:flex; flex-direction:column; flex: 8;">
-        <div id="top" style="display: flex; flex-direction: row; flex: 1">
-          <div id="name" style="flex: 1; color: white; margin: 10px; text-align: left;">
-            <h1>{{ user.first_name }} {{ user.last_name }}</h1>
-            <h3>{{ user.profile.title }} at {{ user.profile.company }}</h3>
-          </div>
-          
-          <div id="extra" style="display: flex; flex-direction: column; flex: 1;">
-            <div id="space" style="flex: 2;"></div>
-            <div id="starFollwing" style="flex: 1; display: flex; flex-direction: row; text-align: center; vertical-align: middle">
-              <div id='empty' style="flex: 1"></div>
-              <div id='empty' style="flex: 1"></div>
-              <div id="star" style="flex: 1; background-color:white; margin: 10px; height:90%">
-<!--                 <img src="{% static 'css/star.jpg' %}" style="height: 22px; vertical-align: middle"> -->
-                <span style="color:yellow; font-size:200%; text-align:left;">&#9733;{{ user.profile.star }}</span>
+      <div class="arrange" style="width:80%; margin:auto;" >
+
+        <div id="pic" style="float:left; margin: 10px; flex: 2; width:10%;">
+          <img src="{% static 'css/default.jpg' %}" style="width: 100%; border-radius: 1000px">
+        </div>
+        <div id="content" style="display:flex; flex-direction:column; flex: 8;">
+          <div id="top" style="display: flex; flex-direction: row; flex: 1;">
+            <div id="name" style="flex: 1; color: white; margin: 10px; text-align: left;">
+              <h1>{{ user.first_name }} {{ user.last_name }}</h1>
+              <h3>{{ user.profile.title }} at {{ user.profile.company }}</h3>
+            </div>
+
+            <div id="extra" style="display: flex; flex-direction: column; flex: 1;">
+              <div id="space" style="flex: 2;"></div>
+              <div id="starFollwing" style="flex: 1; display: flex; flex-direction: row; text-align: center; vertical-align: middle">
+                <div id='empty' style="flex: 1"></div>
+                <div id='empty' style="flex: 1"></div>
+                <button id="star" style="flex: 1; background-color:white; margin: 10px;  border-radius: 10px;">
+                  <span>&#9733;</span><span id="starnumber" style="font-size:150%; text-align:left;">{{ user.profile.star }}</span>
+                </button>
+                <button id="follow" style="flex: 1; background-color: white; margin: 10px;border-radius: 10px;"><span>&#x2713 Follow</span></button>
               </div>
-              <button id="follow" style="flex: 1; background-color: white; margin: 10px;"><span>&#x2713</span>Follow</button>
             </div>
           </div>
         </div>
         
         <div id="bottom" style="display:flex; flex-direction: row; flex: 1">
-          <div id="description" style="flex: 2; border-style: solid; border-color: white;background-color: white; color: black; margin: 10px;">
+          <div id="description" style="flex: 2; border-style: solid; border-color: white;background-color: white; color: black; margin: 10px;border-radius: 10px;">
             <h2>Job Description</h2>
             <p>I am a full stack developer, primarily working on auto-driving cars.</p>
           </div>
-          <div id='me' style="flex: 2; border-style: solid; background-color: white;border-color: white; color: black; margin: 10px;">
+          <div id='me' style="flex: 2; border-style: solid; background-color: white;border-color: white; color: black; margin: 10px;border-radius: 10px;">
             <h2>About Me</h2>
             <div class="aboutme">
               {{ user.profile.aboutMe|safe|truncatewords:"20" }}
@@ -65,33 +67,38 @@
         </div>
       </div>
     </div>
+    <div class="entries" >
+    
+      <div class="posts" style="display:flex; flex-wrap:wrap; width:80%; margin:auto;">
+        <div id="one">
+          <h1>08/05/2018</h1>
+         <p>The End to a Perfect Week</p>
+        </div>
+        <div id="one">
+          <h1>08/04/2018</h1>
+          <p>Weekend Outing</p>
+        </div>
+        <div id="one">
+          <h1>08/03/2018</h1>
+          <p>Team Dinner</p>
+        </div>
+        <div id="one">
+          <h1>08/02/2018</h1>
+          <p>Programming an auto car</p>
+        </div>
+        <div id="one">
+          <h1>08/01/2018</h1>
+          <p>First day at Google</p>
+        </div>
 
-    <div class="posts" style="display:flex; flex-wrap:wrap;">
-      <div id="one">
-        <h1>08/05/2018</h1>
-       <p>The End to a Perfect Week</p>
+        <div class='button'>
+          <button type="button" class="add-button" onclick="location.href='../post_making'"> <center>+</center></button>
+<!--           <button type="button" class="add-button" onclick="location.href='../post_making'">
+            <img src="https://cdn4.iconfinder.com/data/icons/vectory-bonus-3/40/button_add-512.png">
+          </button> -->
+        </div>
+       </div>
       </div>
-      <div id="one">
-        <h1>08/04/2018</h1>
-        <p>Weekend Outing</p>
-      </div>
-      <div id="one">
-        <h1>08/03/2018</h1>
-        <p>Team Dinner</p>
-      </div>
-      <div id="one">
-        <h1>08/02/2018</h1>
-        <p>Programming an auto car</p>
-      </div>
-      <div id="one">
-        <h1>08/01/2018</h1>
-        <p>First day at Google</p>
-      </div>
-  
-      <div class='button'>
-        <button type="button" class="add-button" onclick="location.href='../post_making'"> + </button>
-      </div>
-    </div>
 
     <style type="text/css">
       .main {
@@ -99,53 +106,93 @@
         width:100%;
         margin:0;
       }
-      .posts{
-        background-color:#F9F9F9;
+      .entries{
+        background-color:white;
       }
       .posts #one {
-        margin: 60px 15px;
+        margin: 55px 17px;
         display:inline-block;
-        width:250px;
+        width:21%;
         border-style: solid;
         border-width: 5px;
         border-color: #FFE0B2;
         border-radius: 10px;
-        background-color:white;
+        background-color:#ffffe4;
         text-align:center;
       }
       .button .add-button {
         height: 70px;
         width: 70px;
-        padding: 10px;
+/*         padding: 10px; */
         border-radius:50%;
+        border-color:#FFE0B2;
+        background-color:#ffffe4;
         color:black;
+        font-size:35px;
         border-width:thick;
-      }
-      .button {
         position:fixed;
         bottom: 70px;
         right:70px;
       }
+
     </style>
     
     
     <script>
-    $(document).ready(function(){				
-
-      $("#follow").click(function(){
-        if ($("#follow").text() == "Follow"){
+//     $(document).ready(function(){				
+// //       $(".button").onclick(function(){
+// //         $(".button").css("border-color", "grey");
+// //         });
+//       $("#follow").click(function(){
+//         if ($("#follow").text() == "Follow"){
+//             $("#follow").css("color", "black");
+//             $("#follow").text("Following");
+//             $("#follow").css("background-color", "green");
+//         }else{
+//             $("#follow").text("Follow");
+//             $("#follow").css("color", "black");
+//             $("#follow").css("border-color", "#F9F9F9");
+//             $("#follow").css("background-color", "grey");
+//         }
+//       }); 
+      
+//       $("#star").click(function() {
+//         $("#star").css("color", "yellow");
+// //         if ($("#star").css("color") != "yellow"){
+// //            $("#star").css("color", "yellow");
+// //           $("#star").html(parseInt($("#star").text(), 10) +1);
+// //       }
+//         }
+          
+      
+//     )
+//     };
+      
+      $(document).ready(function(){				
+        $("#follow").click(function(){
+          if ($("#follow").text() == "Follow"){
             $("#follow").css("color", "black");
-            $("#follow").text("Following");
-            $("#follow").css("background-color", "green");
-        }else{
+            $("#follow").html("&#x2713 Following");
+          }else{
             $("#follow").text("Follow");
-            $("#follow").css("color", "black");
-            $("#follow").css("border-color", "#F9F9F9");
-            $("#follow").css("background-color", "grey");
-        }
-      }); 
-    });
+          }
+        }); 
+        
+        $("#star").click(function() {
+          if($("#star").css("color") != "yellow"){
+            var num = $("#starnumber").text()
+            var value = parseInt(num, 10) + 1;
+            $("#star").css("color", "yellow");
+            $("#starnumber").text(value);
+          } else {
+            var back = $("#starnumber").text()
+            var sub = parseInt(num, 10) - 1;
+            $("star").css("color", "black");
+            $("#starnumber").text(sub);
+          }
+         });
     
+        });
     </script>
   </body>
 </html>

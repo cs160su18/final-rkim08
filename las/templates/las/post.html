@@ -23,17 +23,19 @@
       </div>
     </div>
     
-     <div class="main" >
-      <div class="user" style="display: flex; flex: 1; flex-direction: row;">
-        <div id="pic" style="flex-direction: row; flex: 0.5; width: 20%; justify-content: flex-end; align-items: flex-end; margin: 0;">
-         <img src="../../static/css/default.jpg" style="width: 40%; margin-top: 10px;">
+     <div class="main" style="width:80%; margin:auto;" >
+       <div class="top" style="width:80%;margin:auto;">
+        <div class="user" style="display: flex; flex: 1; flex-direction: row;">
+          <div id="pic" style="flex-direction: row; flex: 0.5; width: 20%; justify-content: flex-end; align-items: flex-end; margin: 0;">
+           <img src="../../static/css/default.jpg" style="width: 40%; margin-top: 10px;">
+          </div>
+          <div id="name" style="flex: 2; flex-direction: column; text-align: left; color: white;">
+            <h1>{{ poster.first_name }} {{ poster.last_name }}</h1>
+            <h3>{{ poster.profile.title }} at {{ poster.profile.company }}</h3>
+          </div>
         </div>
-        <div id="name" style="flex: 2; flex-direction: column; text-align: left; color: white;">
-          <h1>{{ poster.first_name }} {{ poster.last_name }}</h1>
-          <h3>{{ poster.profile.title }} at {{ poster.profile.company }}</h3>
-        </div>
-      </div>
-
+       </div>
+<!-- 
       <div class="container">
         <div id="content" style="text-align:left; margin-top:20px; width:80%; overflow:auto;">
           <h1>08/06/2018</h1>
@@ -49,23 +51,31 @@
             
             
           </p>
-        </div>
+        </div> -->
         
-         <div class="container">
-        <div id="content" style="text-align:left; margin-top:10px; width:80%; overflow:auto;">
-          <h1>{{ post.date }}</h1>
-          <div id='post'>{{ post.content }}</div>
-        </div>
-        <div id="comment" style="margin-top:10px;text-align:left; width: 80%; height: 100%; margin-bottom:20px;">
-          <h2>Comments</h2>
-          <input type="text" placeholder="Add a comment" style="height:30px;">
-          <button type="submit" ><i class="fa fa-search"></i>Comment</button>
-        </div>
-
+        <div class="container">
+          <div id="content" style="text-align:left; margin-top:10px; width:80%; overflow:auto;">
+            <h1>{{ post.date }}</h1>
+            <div id='post'>{{ post.content }}</div>
+          </div>
+          <div id="comment" style="margin-top:10px;text-align:left; width: 80%; height: 100%; margin-bottom:20px;">
+            <h2>Comments</h2>
+            <input type="text" placeholder="Add a comment" style="height:30px;">
+            <button type="submit" ><i class="fa fa-search"></i>Comment</button>
+          </div>
       </div>
+       
+       <div class="control" style="width:80%;">
+         <div id="previous" style="margin-left:0;">
+           <button id='previous' class="btn btn-light" onclick="location.href='../../myCollections">Previous Post</button>
+         </div>
+         <div id="next" style="margin-left:75%;">
+           <button id='next' class="btn btn-light" onclick="location.href='../myCollections'">Next Post</button>
+         </div>
+       </div>
     </div>
        
-    </div>
+  
     <script>
       $(window).on('load', function() {
         var wrapper = document.getElementById('post');
@@ -97,7 +107,7 @@
         background-color:white;
       }
       .user{
-        background-color:#113A5D;
+        background-color:#42a5f4;
         width:100%;
       }
     </style>
