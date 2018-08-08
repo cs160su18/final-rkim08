@@ -1,0 +1,151 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+  <head>
+    <link href="https://fonts.googleapis.com/css?family=Fira+Sans" rel="stylesheet">
+    <link type ="text/css" rel="stylesheet" href="{% static 'css/main.css' %}">
+
+    <script src="{% static '/vendor/jquery/jquery-3.3.1.min.js' %}"></script>
+    <script src="{% static '/vendor/jquery-ui/jquery-ui.min.js' %}"></script>
+
+  </head>
+
+  <body>
+    <div class="navigator">
+      {% if user.is_authenticated %}
+        <a href="{% url 'logout_view' %}">Log Out</a>
+        <a href="{% url 'myCollections' %}" class ="active">{{ user.first_name }}'s Collections</a>
+      {% else %}
+        <a href="{% url 'signinup' %}">Sign Up / Login</a>
+      {% endif %}
+      <a href="{% url 'category' %}">Category</a>
+      <a href="{% url 'guide' %}">User Guide</a>
+      <div id="logo">
+        <a href="{% url 'index' %}" class ="active" id="logo">LAS</a>
+      </div>
+    </div>
+  
+    <div class="main" style="display: flex;">
+      <div id="pic" style="float:left; margin: 10px; flex: 2">
+        <img src="{% static 'css/default.jpg' %}" style="width: 100%; border-radius: 1000px">
+      </div>
+      <div id="content" style="display:flex; flex-direction:column; flex: 8;">
+        <div id="top" style="display: flex; flex-direction: row; flex: 1">
+          <div id="name" style="flex: 1; color: white; margin: 10px; text-align: left;">
+            <h1>{{ user.first_name }} {{ user.last_name }}</h1>
+            <h3>{{ user.profile.title }} at {{ user.profile.company }}</h3>
+          </div>
+          
+          <div id="extra" style="display: flex; flex-direction: column; flex: 1;">
+            <div id="space" style="flex: 2;"></div>
+            <div id="starFollwing" style="flex: 1; display: flex; flex-direction: row; text-align: center; vertical-align: middle">
+              <div id='empty' style="flex: 1"></div>
+              <div id='empty' style="flex: 1"></div>
+              <div id="star" style="flex: 1; background-color:white; margin: 10px; height:90%">
+<!--                 <img src="{% static 'css/star.jpg' %}" style="height: 22px; vertical-align: middle"> -->
+                <span style="color:yellow; font-size:200%; text-align:left;">&#9733;{{ user.profile.star }}</span>
+              </div>
+              <button id="follow" style="flex: 1; background-color: white; margin: 10px;"><span>&#x2713</span>Follow</button>
+            </div>
+          </div>
+        </div>
+        
+        <div id="bottom" style="display:flex; flex-direction: row; flex: 1">
+          <div id="description" style="flex: 2; border-style: solid; border-color: white;background-color: white; color: black; margin: 10px;">
+            <h2>Job Description</h2>
+            <p>I am a full stack developer, primarily working on auto-driving cars.</p>
+          </div>
+          <div id='me' style="flex: 2; border-style: solid; background-color: white;border-color: white; color: black; margin: 10px;">
+            <h2>About Me</h2>
+            <div class="aboutme">
+              {{ user.profile.aboutMe|safe|truncatewords:"20" }}
+              <a href="{{ url_for_full_content }}">read more</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="posts" style="display:flex; flex-wrap:wrap;">
+      <div id="one">
+        <h1>08/05/2018</h1>
+       <p>The End to a Perfect Week</p>
+      </div>
+      <div id="one">
+        <h1>08/04/2018</h1>
+        <p>Weekend Outing</p>
+      </div>
+      <div id="one">
+        <h1>08/03/2018</h1>
+        <p>Team Dinner</p>
+      </div>
+      <div id="one">
+        <h1>08/02/2018</h1>
+        <p>Programming an auto car</p>
+      </div>
+      <div id="one">
+        <h1>08/01/2018</h1>
+        <p>First day at Google</p>
+      </div>
+  
+      <div class='button'>
+        <button type="button" class="add-button" onclick="location.href='../post_making'"> + </button>
+      </div>
+    </div>
+
+    <style type="text/css">
+      .main {
+        background-color:#42A5F4;
+        width:100%;
+        margin:0;
+      }
+      .posts{
+        background-color:#F9F9F9;
+      }
+      .posts #one {
+        margin: 60px 15px;
+        display:inline-block;
+        width:250px;
+        border-style: solid;
+        border-width: 5px;
+        border-color: #FFE0B2;
+        border-radius: 10px;
+        background-color:white;
+        text-align:center;
+      }
+      .button .add-button {
+        height: 70px;
+        width: 70px;
+        padding: 10px;
+        border-radius:50%;
+        color:black;
+        border-width:thick;
+      }
+      .button {
+        position:fixed;
+        bottom: 70px;
+        right:70px;
+      }
+    </style>
+    
+    
+    <script>
+    $(document).ready(function(){				
+
+      $("#follow").click(function(){
+        if ($("#follow").text() == "Follow"){
+            $("#follow").css("color", "black");
+            $("#follow").text("Following");
+            $("#follow").css("background-color", "green");
+        }else{
+            $("#follow").text("Follow");
+            $("#follow").css("color", "black");
+            $("#follow").css("border-color", "#F9F9F9");
+            $("#follow").css("background-color", "grey");
+        }
+      }); 
+    });
+    
+    </script>
+  </body>
+</html>

@@ -4,11 +4,11 @@ body{
 
 .navigator{
 	overflow: hidden;
-	background-color: #062743;
+	background-color: #0077C1;
   font-family: Arial, Helvetica, sans-serif;
   font-size: 30px;
 }
-.navigator a{
+.navigator a {
 	float: right;
 	color: white;
 	text-align: center;
@@ -18,14 +18,14 @@ body{
 }
 .navigator #logo {
   float:left;
-  background-color: #062743; 
+  background-color: #0077C1; 
   font-size:15px;
   width: 200px;
 }
 .navigator a:hover {
-	background-color: #113A5D;
+	background-color: #42A5F4;
 	
 }
 .navigator a.active {
-	background-color: #113A5D;
+	background-color: #42A5F4;
 }

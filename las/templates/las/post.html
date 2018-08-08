@@ -1,76 +1,105 @@
+{% load static %}
 <!DOCTYPE html>
 <html>
-<head>
-	<link type ="text/css" rel="stylesheet" href="../../static/css/main.css">
-  
-  <style type="text/css">
-    body, html{
-      height:100%;
-      background-color: #F9F9F9;
-      margin:0;
-    }
-    .main {
-        text-align:center;
+  <head>
+    <link href="https://fonts.googleapis.com/css?family=Fira+Sans" rel="stylesheet">
+    <link type ="text/css" rel="stylesheet" href="{% static 'css/main.css' %}">
+
+    <script src="{% static '/vendor/jquery/jquery-3.3.1.min.js' %}"></script>
+    <script src="{% static '/vendor/jquery-ui/jquery-ui.min.js' %}"></script>
+  </head>
+  <body>
+    <div class="navigator">
+      {% if user.is_authenticated %}
+        <a href="{% url 'logout_view' %}">Log Out</a>
+        <a href="{% url 'myCollections' %}">{{ user.first_name }}'s Collections</a>
+      {% else %}
+        <a href="{% url 'signinup' %}">Sign Up / Login</a>
+      {% endif %}
+      <a href="{% url 'category' %}">Category</a>
+      <a href="{% url 'guide' %}">User Guide</a>
+      <div id="logo">
+        <a href="{% url 'index' %}" id="logo">LAS</a>
+      </div>
+    </div>
+    
+     <div class="main" >
+      <div class="user" style="display: flex; flex: 1; flex-direction: row;">
+        <div id="pic" style="flex-direction: row; flex: 0.5; width: 20%; justify-content: flex-end; align-items: flex-end; margin: 0;">
+         <img src="../../static/css/default.jpg" style="width: 40%; margin-top: 10px;">
+        </div>
+        <div id="name" style="flex: 2; flex-direction: column; text-align: left; color: white;">
+          <h1>{{ poster.first_name }} {{ poster.last_name }}</h1>
+          <h3>{{ poster.profile.title }} at {{ poster.profile.company }}</h3>
+        </div>
+      </div>
+
+      <div class="container">
+        <div id="content" style="text-align:left; margin-top:20px; width:80%; overflow:auto;">
+          <h1>08/06/2018</h1>
+          <center><img src="https://i.investopedia.com/content/short_article/top_4_companies_owne/shutterstock_227705986_google_android_robot.jpg"></center>
+          <h1>My day at Google </h1>
+          <p> 'What's it like working at Google?', was a question I always asked to others. Today, I'll be able to find out myself.
+          I started my day, half excited, half anxious. The weather was terrific. I got to see people riding around the infamous google bikes all around
+            the company. 
+            <br>
+            So how was my first day at Google? 
+            <br>
+            To answer shortly. It was amazing. Not only is it amazing that I work at one of the most well-known company, but the work vibe is also very pleasant.
+            
+            
+          </p>
+        </div>
+        
+         <div class="container">
+        <div id="content" style="text-align:left; margin-top:10px; width:80%; overflow:auto;">
+          <h1>{{ post.date }}</h1>
+          <div id='post'>{{ post.content }}</div>
+        </div>
+        <div id="comment" style="margin-top:10px;text-align:left; width: 80%; height: 100%; margin-bottom:20px;">
+          <h2>Comments</h2>
+          <input type="text" placeholder="Add a comment" style="height:30px;">
+          <button type="submit" ><i class="fa fa-search"></i>Comment</button>
+        </div>
+
+      </div>
+    </div>
+       
+    </div>
+    <script>
+      $(window).on('load', function() {
+        var wrapper = document.getElementById('post');
+        var text = wrapper.innerHTML;
+        wrapper.innerHTML = '';
+        var text = text.replace(/&lt;/g, "<");
+        var text = text.replace(/&gt;/g, ">");
+        wrapper.insertAdjacentHTML('afterbegin', text);
+      });
+    </script>
+    
+    <style>
+      body, html {
+        height:100%;
+        background-color: #F9F9F9;
         margin:0;
       }
-      
-      .main input[type='text'] {
-        width:90%;
+      .main {
+          text-align:center;
+          margin:0;
+        }
+        .main input[type='text'] {
+          width:90%;
+        }
+      .container #content, .container #comment{
+        display:inline-block;
+        width:80%;
+        border-radius: 10px;
+        background-color:white;
       }
-    
-    .container #content, .container #comment{
-      
-      display:inline-block;
-      width:80%;
-      border-radius: 10px;
-      background-color:white;
-    }
-    .user{
-      background-color:#113A5D;
-      width:100%;
-    }
-    
-  </style>
-</head>
-
-<body>
-	<div class="navigator">
-		<a href="{% url 'login' %}">Sign Up / Login</a>
-    <a href="{% url 'collections' %}">My Collections</a>
-    <a href="{% url 'search' %}">Category</a>
-    <a href="{% url 'guide' %}">User Guide</a>
-		<div id="logo">
-      <a href="{% url 'index' %}" id="logo">LAS</a>
-    </div>
-	</div>
-  
-  <div class="main" >
-    <div class="user" style="display:flex; flex:1; flex-direction:row;">
-      <div id="pic" style=" flex-direction:row;flex:0.5;width: 20%; justify-content:flex-end; align-items:flex-end; margin:0;">
-       <img src="../../static/css/bacon.jpg" style="width:40%; margin-top:10px;">
-      </div>
-      <div id="name" style="flex:2;flex-direction:column; text-align:left; color:white;">
-        <h1>Kevin Bacon</h1>
-        <h3>Software Engineer-Google</h3>
-      </div>
-    </div>
-
-    <div class="container">
-      <div id="content" style="text-align:left; margin-top:10px; width:80%; overflow:auto;">
-        <h1>08/06/2018</h1>
-        <center><img src="https://i.investopedia.com/content/short_article/top_4_companies_owne/shutterstock_227705986_google_android_robot.jpg"></center>
-        <h1>My day at Google </h1>
-        <p>Hello Hello Hello Hello Hello Hello Hello Hello Hello Hello Hello Hello Hello Hello Hello Hello Hello Hello Hello Hello Hello Hello Hello 
-        Hello Hello Hello Hello Hello Hello Hello Hello Hello Hello Hello Hello Hello Hello Hello Hello Hello Hello Hello Hello Hello Hello Hello Hello Hello Hello Hello Hello Hello </p>
-      </div>
-      <div id="comment" style="margin-top:10px;text-align:left; width: 80%; height: 100%; margin-bottom:20px;">
-        <h2>Comments</h2>
-        <input type="text" placeholder="Add a comment" style="height:30px;">
-        <button type="submit" ><i class="fa fa-search"></i>Comment</button>
-      </div>
-      
-    </div>
-  </div>
-
-</body>
+      .user{
+        background-color:#113A5D;
+        width:100%;
+      }
+    </style>
+  </body>
 </html>

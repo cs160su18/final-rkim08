@@ -1,18 +1,18 @@
 from django.urls import path
 from django.conf.urls import url
-from django.contrib import admin
-from django.contrib.auth import views as auth_views
 from . import views
 
 urlpatterns = [
-    path('', views.index, name='index'),
-    path('guide', views.guide, name='guide'),
-    path('search', views.search, name='search'),
-    path('collection', views.collections, name='collections'),
-    path('login', views.login, name='login'),
-    path('collection/post', views.post, name='post'),
-    
-    url(r'^login/$', auth_views.login, {'template_name':'las/login.html'}, name='login'),
-#     url(r'^logout/$', auth_views.logout, name='logout'),
-#     url(r'^admin/', admin.site.urls),
+  path('', views.index, name='index'),
+  path('category/', views.category, name='category'),
+  path('post_making/', views.post_making, name='post_making'),
+  path('guide/', views.guide, name='guide'),
+  path('signinup/', views.signinup, name='signinup'),
+  path('signin/', views.signin, name='signin'),
+  path('signup/', views.signup, name='signup'),
+  path('search/', views.search, name='search'),
+  path('myCollections/', views.myCollections, name='myCollections'),
+#   path('post/', views.post, name='post'),
+  path('logout_view/', views.logout_view, name='logout_view'),
+  url(r'^(?P<post_id>[0-9]+)$', views.post, name='post')
 ]
