@@ -29,22 +29,34 @@
     
     <div class="main" style="">
       <input type="text" placeholder="Search..." >
-      <button type="submit" onclick="location.href='../search/'" style="height:40px; margin-left:15px; padding:15px 28px"><i class="fa fa-search"></i>Search</button>
+      <button type="submit" onclick="location.href='../search/'" 
+              style="height:100%; margin-left:15px; padding:15px 28px; font-size:15px;text-align:center;box-shadow: 5px 5px 5px grey;">
+        <i class="fa fa-search"></i>Search
+      </button>
       
-      {% for profile in profiles %}
+    
       <div id="feature" style="width:70%; margin:auto;">
-        <div id="second" style="width:50%;display:flex: flex-direction:row;">
-          <div id="pic" style="float:left; width: 40%; height:100%">
+        
+        <div id="row" style="display:flex; flex-direction: row;">
+       {% for profile in profiles %}
+          <div id="second" style="width:50%;display:flex: flex-direction:row;flex-wrap:wrap">
+          <div id="pic" style="float:left; width: 50%; height:100%">
             <center><img src="{% static 'css/default.jpg' %}" style="width: 100%; border-radius: 200px;"></center>
           </div>
           <div id="name" style="float: right; width: 50%;">
+          
             <h3>{{ profile.user.first_name }} {{ profile.user.last_name }}</h3>
             <p>{{ profile.title }} <br>{{ profile.company }}</p>
-            <p>&#9733;{{profile.star}}</p>
+            <p>{{profile.star}}</p>
           </div>
         </div>
+        {% endfor %}
+          
+      
+       
+       </div>
       </div>
-      {% endfor %}
+     
       
     </div>
     
@@ -69,7 +81,7 @@
       }
       .main input[type='text']{
         width:50vw;
-        font-size:25px;
+        font-size:20px;
         height:40px;
         box-shadow: 5px 5px 5px grey;
       }
@@ -77,9 +89,7 @@
         background-color: grey;
         height:100%:
       }
-      .main button{
-        
-      }
+    
       body, html{
         height:100%;
       }
@@ -89,37 +99,24 @@
         background-size:100% 100%:
       }
      
-      #feature div {
+/*       #feature div {
         background-color:#FFFFFF;
-      }
+      } */
       
       #feature #second {
         margin: 60px 15px;
         display: inline-block;
         height: 100%;
-        width: 250px;
+        width: 200px;
         border-style: solid;
         border-width: 5px;
         border-color: #FFE0B2;
         border-radius: 10px;
+        background-color:white;
       }
     </style>
 
   </body>
 </html>
 
-
-<!-- 
-      <section id="feature">
-        <div id="second">
-          <div style="float:left; width: 40%; height:100%">
-            <img src="https://lh3.googleusercontent.com/igsAgts4NCiWjewagOFo4eymGWNnklXLCeB_J-wm1G2sbFwNlU2evIXgOegSjbQrCrT3RHE=s85" style="width: 100%;">
-          </div>
-          <div style="float: right; width: 60%;">
-            <h3>Kevin Bacon</h3>
-            <h4>Software Engineer <br>Google</h4>
-          </div>
-        </div>
-      </section> -->
- 
    
