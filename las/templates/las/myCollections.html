@@ -43,9 +43,15 @@
               <div id="starFollwing" style="flex: 1; display: flex; flex-direction: row; text-align: center; vertical-align: middle">
                 <div id='empty' style="flex: 1"></div>
                 <div id='empty' style="flex: 1"></div>
-                <button id="star" style="flex: 1; background-color:white; margin: 10px;  border-radius: 10px;">
-                  <span>&#9733;</span><span id="starnumber" style="font-size:150%; text-align:left;">{{ user.profile.star }}</span>
-                </button>
+<!--                 <div id="star" style="flex: 1; background-color:white; margin: 10px;  border-radius: 10px;">
+                  <span class="fa fa-star-o">&#9733;<span id="starnumber" style="font-size:150%; text-align:left;">{{ user.profile.star }}</span></span>
+                </div> -->
+                <div class="click" style="text-align:center; flex: 1; background-color:white; margin: 10px;  border-radius: 10px;">
+                    <center><span class="fa fa-star-o" style="text-align:center;font-size:80%;width:100%;display:inline-block;">&#9733;{{ user.profile.star }}</span></center>
+                    <div class="mark"></div>
+                    <div class="unmark"></div>
+                    <p class="message">Added to favourites!</p>
+                  </div>
                 <button id="follow" style="flex: 1; background-color: white; margin: 10px;border-radius: 10px;"><span>&#x2713 Follow</span></button>
               </div>
             </div>
@@ -134,39 +140,95 @@
         bottom: 70px;
         right:70px;
       }
+      
+      .click {
+        font-size: 33px;
+        color: rgba(0,0,0,.5);
+/*         width: 38px; */
+        height: 100%;
+        margin: 0 auto;
+        position: relative;
+        cursor: pointer;
+      }
+
+      .click span {
+        margin-left: 4px;
+        margin-top: 3px;
+        z-index: 999;
+        position: absolute;
+      }
+
+      span:hover {
+        opacity: 0.8;
+      }
+
+      .mark, .unmark {
+        width: 1px; 
+        height: 1px; 
+        position: absolute;
+        top: 19px;
+        left: 19px;
+        border-radius: 60%;
+        cursor: pointer;
+      }
+
+      .active span {
+        color: #F5CC27;
+      }
+
+      .active .unmark {
+        background: #fff;
+      }
+
+      .message {
+        font-family: 'Titillium Web', sans-serif;
+        font-size: 12px;
+        font-weight: 600;
+        text-transform: uppercase;
+        white-space: nowrap;
+        position: relative;
+        top: 30px;
+        left: -50px;
+        opacity: 0;
+        color: #F5CC27;
+        transition: all 0.3s ease;
+      }
+
+      .message-tog {
+        color: #F5CC27;
+        position: relative;
+        top: 40px;
+        opacity: 1;
+      }
+
+      * {
+        transition: all .30s ease;
+      }
+
 
     </style>
     
     
     <script>
-//     $(document).ready(function(){				
-// //       $(".button").onclick(function(){
-// //         $(".button").css("border-color", "grey");
-// //         });
-//       $("#follow").click(function(){
-//         if ($("#follow").text() == "Follow"){
-//             $("#follow").css("color", "black");
-//             $("#follow").text("Following");
-//             $("#follow").css("background-color", "green");
-//         }else{
-//             $("#follow").text("Follow");
-//             $("#follow").css("color", "black");
-//             $("#follow").css("border-color", "#F9F9F9");
-//             $("#follow").css("background-color", "grey");
-//         }
-//       }); 
-      
-//       $("#star").click(function() {
-//         $("#star").css("color", "yellow");
-// //         if ($("#star").css("color") != "yellow"){
-// //            $("#star").css("color", "yellow");
-// //           $("#star").html(parseInt($("#star").text(), 10) +1);
-// //       }
-//         }
-          
-      
-//     )
-//     };
+      $('.click').click(function() {
+        // if star is marked
+        if ($('span').hasClass('fa-star')) {
+            $('.click').removeClass('active')
+          setTimeout(function() {
+            $('span').removeClass('fa-star')
+            $('span').addClass('fa-star-o') }, 15)
+        } else {
+          $('.click').addClass('active')
+          setTimeout(function() {
+            $('span').addClass('fa-star')
+            $('span').removeClass('fa-star-o')
+          }, 150)
+          $('.message').addClass('message-tog')
+          setTimeout(function(){
+            $('.message').removeClass('message-tog')
+          },1000)
+        }
+      });
       
       $(document).ready(function(){				
         $("#follow").click(function(){
@@ -178,19 +240,21 @@
           }
         }); 
         
-        $("#star").click(function() {
-          if($("#star").css("color") != "yellow"){
-            var num = $("#starnumber").text()
-            var value = parseInt(num, 10) + 1;
-            $("#star").css("color", "yellow");
-            $("#starnumber").text(value);
-          } else {
-            var back = $("#starnumber").text()
-            var sub = parseInt(num, 10) - 1;
-            $("star").css("color", "black");
-            $("#starnumber").text(sub);
-          }
-         });
+//         $("#star").click(function() {
+//           clicked = false;
+//           if(!clicked){
+//             var num = $("#starnumber").text();
+//             var value = parseInt(num, 10) + 1;
+//             $("#starnumber").text(value);
+//             $(this).css("color", "yellow");
+//             clicked = true;
+//             event.stopPropagation();
+//           } else {
+//             $("#starnumber").text(12);
+            
+//           }
+//         });
+       
     
         });
     </script>
