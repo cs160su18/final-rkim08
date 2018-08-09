@@ -13,8 +13,8 @@ body{
 	float: right;
 	color: white;
 	text-align: center;
-	padding: 20px 15px;
-	font-size: 15px;
+	padding: 20px 17px;
+	font-size: 18px;
   text-decoration:none;
 }
 .navigator #logo {
@@ -23,14 +23,18 @@ body{
   background-color: #0077C1; 
   font-size:15px;
   width: 200px;
+  font-size:18px;
 }
 .navigator a:hover {
 	background-color: #42A5F4;
-  height:100%:
+  height:100%;
+  font-size:18.5px;
+   
   
 	
 }
 .navigator a.active {
 	background-color: #42A5F4;
   height:100%;
+  font-size:19px;
 }

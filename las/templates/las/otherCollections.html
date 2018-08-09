@@ -1,0 +1,106 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+  <head>
+    <link href="https://fonts.googleapis.com/css?family=Fira+Sans" rel="stylesheet">
+    <link type ="text/css" rel="stylesheet" href="{% static 'css/main.css' %}">
+
+    <script src="{% static '/vendor/jquery/jquery-3.3.1.min.js' %}"></script>
+    <script src="{% static '/vendor/jquery-ui/jquery-ui.min.js' %}"></script>
+
+  </head>
+
+  <body>
+    <div class="navigator">
+      {% if user.is_authenticated %}
+        <a href="{% url 'logout_view' %}">Log Out</a>
+        <a href="{% url 'myCollections' %}">{{ user.first_name }}'s Collections</a>
+      {% else %}
+        <a href="{% url 'signinup' %}">Sign Up / Login</a>
+      {% endif %}
+      <a href="{% url 'category' %}">Category</a>
+      <a href="{% url 'guide' %}">User Guide</a>
+      <div id="logo">
+        <a href="{% url 'index' %}" class ="active" id="logo">LAS</a>
+      </div>
+    </div>
+  
+    <div class="main" style="display: flex;">
+      <div id="pic" style="float:left; margin: 10px; flex: 2">
+        <img src="{% static 'css/default.jpg' %}" style="width: 100%; border-radius: 1000px">
+      </div>
+      <div id="content" style="display:flex; flex-direction:column; flex: 8;">
+        <div id="top" style="display: flex; flex-direction: row; flex: 1">
+          <div id="name" style="flex: 1; color: white; margin: 10px; text-align: left;">
+            <h1>{{ poster.first_name }} {{ poster.last_name }}</h1>
+            <h3>{{ poster.profile.title }} at {{ poster.profile.company }}</h3>
+          </div>
+          
+          <div id="extra" style="display: flex; flex-direction: column; flex: 1;">
+            <div id="space" style="flex: 2;"></div>
+            <div id="starFollwing" style="flex: 1; display: flex; flex-direction: row; text-align: center; vertical-align: middle">
+              <div id='empty' style="flex: 1"></div>
+              <div id='empty' style="flex: 1"></div>
+              <div id="star" style="flex: 1; background-color: #F9F9F9; margin: 10px">
+                <img src="{% static 'css/star.jpg' %}" style="height: 22px; vertical-align: middle">
+                <span>{{ poster.profile.star }}</span>
+              </div>
+              <div id="following" style="flex: 1; background-color: #F9F9F9; margin: 10px;">Following</div>
+            </div>
+          </div>
+        </div>
+        
+        <div id="bottom" style="display:flex; flex-direction: row; flex: 1">
+          <div id="description" style="flex: 2; border-style: solid; background-color: #F9F9F9; color: black; margin: 10px;">
+            <h2>Job Description</h2>
+            <h3>{{ poster.profile.jobDescription|safe|truncatechars:'150' }}</h3>
+            <a href="{{ url_for_full_content }}">read more</a>
+          </div>
+          <div id='me' style="flex: 2; border-style: solid; background-color: #F9F9F9; color: black; margin: 10px;">
+            <h2>About Me</h2>
+            <div class="aboutme">
+              {{ poster.profile.aboutMe|safe|truncatechars:"150" }}
+              <a href="{{ url_for_full_content }}">read more</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="posts" style="display:flex; flex-wrap: wrap;">
+      {% for post in posts %}
+      <div id="one">
+        <div id="text">
+          <h1>{{ post.date }}</h1>
+          <span>
+            {{ post.content|safe|truncatechars:'90' }}
+            <a href="../{{ post.pk }}">read more</a>
+          </span>
+        </div>
+      </div>
+      {% endfor %}
+    </div>
+    
+    <style type="text/css">
+      .main {
+        background-color:#113A5D;
+        width:100%;
+        margin:0;
+      }
+      .posts #one {
+        margin: 60px 15px;
+        display: inline-block;
+        width: 250px;
+        border-style: solid;
+        border-width: 5px;
+        border-color: #ffe0b2;
+        border-radius: 10px;
+        text-align: left;
+      }
+      
+      #text {
+        margin-left: 10px;
+      }
+    </style>
+  </body>
+</html>

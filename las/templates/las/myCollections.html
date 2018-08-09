@@ -60,15 +60,15 @@
           </div>
         </div>
         
-        <div id="bottom" style="display:flex; flex-direction: row; flex: 1">
+         <div id="bottom" style="display:flex; flex-direction: row; flex: 1">
           <div id="description" style="flex: 2; border-style: solid; border-color: white;background-color: white; color: black; margin: 10px;border-radius: 10px;">
             <h2>Job Description</h2>
-            <p>I am a full stack developer, primarily working on auto-driving cars.</p>
+            <h3>{{ user.profile.jobDescription|safe|truncatechars:'150' }}</h3>
           </div>
           <div id='me' style="flex: 2; border-style: solid; background-color: white;border-color: white; color: black; margin: 10px;border-radius: 10px;">
             <h2>About Me</h2>
             <div class="aboutme">
-              {{ user.profile.aboutMe|safe|truncatewords:"20" }}
+              {{ user.profile.aboutMe|safe|truncatechars:'150' }}
               <a href="{{ url_for_full_content }}">read more</a>
             </div>
           </div>
@@ -78,35 +78,24 @@
     <div class="entries" >
     
       <div class="posts" style="display:flex; flex-wrap:wrap; width:80%; margin:auto;">
-        <div id="one">
-          <h1>08/05/2018</h1>
-         <p>The End to a Perfect Week</p>
+      {% for post in posts %}
+      <div id="one">
+        <div id="text">
+          <h1>{{ post.date }}</h1>
+          <span>
+            {{ post.content|safe|truncatechars:'90' }}
+            <a href="../{{ post.pk }}">read more</a>
+          </span>
         </div>
-        <div id="one">
-          <h1>08/04/2018</h1>
-          <p>Weekend Outing</p>
-        </div>
-        <div id="one">
-          <h1>08/03/2018</h1>
-          <p>Team Dinner</p>
-        </div>
-        <div id="one">
-          <h1>08/02/2018</h1>
-          <p>Programming an auto car</p>
-        </div>
-        <div id="one">
-          <h1>08/01/2018</h1>
-          <p>First day at Google</p>
-        </div>
+      </div>
+      {% endfor %}
+      </div>
 
         <div class='button'>
           <button type="button" class="add-button" onclick="location.href='../post_making'"> <center>+</center></button>
-<!--           <button type="button" class="add-button" onclick="location.href='../post_making'">
-            <img src="https://cdn4.iconfinder.com/data/icons/vectory-bonus-3/40/button_add-512.png">
-          </button> -->
         </div>
        </div>
-      </div>
+    
 
     <style type="text/css">
       .main {
